@@ -18,10 +18,4 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Fixture\" />
-    <Folder Include="Feature\" />
-    <Folder Include="Steps\" />
-  </ItemGroup>
-
 </Project>

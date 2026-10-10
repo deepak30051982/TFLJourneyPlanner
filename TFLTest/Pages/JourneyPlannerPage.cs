@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TFLTest.Helper.Hooks
+namespace TFLTest.Pages
 {
-    internal class TestHooks
+    internal class JourneyPlannerPage
     {
     }
 }

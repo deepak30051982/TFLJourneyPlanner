@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 using static Microsoft.Playwright.Assertions;
 
-namespace TFLTest
+namespace TFLTest.Tests
 {
     [TestClass]
     public sealed class TFLJourneyPlannerTests //: PageTest
