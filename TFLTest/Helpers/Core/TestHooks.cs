@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TFLTest.Helper.Core
+﻿namespace TFL.JourneyPlanner.Tests.Helpers.Core
 {
     internal class TestHooks
     {

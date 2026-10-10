@@ -1,10 +1,8 @@
 ﻿using Microsoft.Playwright;
-using Microsoft.Playwright.MSTest;
 using System.Text.RegularExpressions;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 using static Microsoft.Playwright.Assertions;
 
-namespace TFLTest.Tests
+namespace TFL.JourneyPlanner.MSTests.Tests
 {
     [TestClass]
     public sealed class TFLJourneyPlannerTests //: PageTest
@@ -129,7 +127,7 @@ namespace TFLTest.Tests
             await planJourneyButton.ClickAsync();
 
             //page is not redirected to results page
-           Assert.DoesNotContain(_page.Url, "/results");
+            Assert.DoesNotContain(_page.Url, "/results");
 
 
             //error messages
