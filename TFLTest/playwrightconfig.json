@@ -1,0 +1,7 @@
+{
+  "BaseUrl": "https://tfl.gov.uk",
+  "PlanJourneyUrl": "https://tfl.gov.uk/plan-a-journey/",
+  "BrowserType": "Chromium",
+  "DefaultTimeoutSeconds": 100,
+  "CaptureTraces": true
+}

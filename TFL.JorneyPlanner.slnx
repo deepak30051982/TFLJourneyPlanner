@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="TFLTest/TFL.JourneyPlanner.Tests.csproj" />
+  <Folder Name="/src/">
+    <Project Path="TFL.JourneyPlanner.Core/TFL.JourneyPlanner.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="TFLTest/TFL.JourneyPlanner.Tests.csproj" />
+  </Folder>
 </Solution>

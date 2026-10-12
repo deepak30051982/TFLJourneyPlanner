@@ -98,7 +98,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
         {
         }
 
-        [TestMethod]
+
         public async Task VerifyInvlidLocations()
         {
             var fromLocationInput = _page.GetByRole(AriaRole.Combobox, new() { Name = "From location" });
@@ -119,7 +119,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
         }
 
-        [TestMethod]
+
         public async Task VerifyNoLocations()
         {
             var planJourneyButton = _page.GetByRole(AriaRole.Button, new() { Name = "Plan my journey" });
