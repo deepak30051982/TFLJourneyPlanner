@@ -10,4 +10,8 @@
     <Folder Include="BrowserFactory\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Playwright" Version="1.63.0" />
+  </ItemGroup>
+
 </Project>

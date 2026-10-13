@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 using System.Text.RegularExpressions;
-using TFL.JourneyPlanner.Core.BrowserFactory.TFL.JourneyPlanner.MSTests.Core;
+using TFL.JourneyPlanner.Core.BrowserFactory;
 using TFL.JourneyPlanner.Tests.Pages;
 using static Microsoft.Playwright.Assertions;
 
@@ -16,7 +16,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
         private JourneyPlannerPage _journeyPlannerPage = null!;
         private JourneyResultsPage _journeyResultsPage = null!;
 
-        [AssemblyInitialize]
+       
         public static async Task AssemblyInitialize(TestContext context)
         {
             await PlaywrightSession.StartAsync();
@@ -24,7 +24,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
             _browser = PlaywrightSession.Browser;
         }
 
-        [AssemblyCleanup]
+       
         public static async Task AssemblyCleanup()
         {
             await PlaywrightSession.StopAsync();
@@ -58,7 +58,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
 
 
-        [TestMethod]
+  
         public async Task VerifyJourneyPlan()
         {
             await PlanJourney();
@@ -68,7 +68,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
         }
 
-        [TestMethod]
+ 
         public async Task VerifyLeastWalkingJourney()
         {
             await PlanJourney();

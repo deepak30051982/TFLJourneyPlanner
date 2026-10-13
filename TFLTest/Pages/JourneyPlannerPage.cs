@@ -20,7 +20,37 @@ namespace TFL.JourneyPlanner.Tests.Pages
         private ILocator FromRequiredError => _page.Locator("#InputFrom-error");
         private ILocator ToRequiredError => _page.Locator("#InputTo-error");
 
+        private ILocator CookieAcceptAllButton => _page.GetByRole(AriaRole.Button, new() { Name = "Accept all cookies" });
+
         //actions
+
+        public async Task Goto(string url)
+        {
+            await _page.GotoAsync(url);
+            await AcceptCookies();
+            await _page.GotoAsync(url);
+        }
+
+        public async Task AcceptCookies()
+        {
+            
+
+            //accept cookies
+            
+            try
+            {
+                await CookieAcceptAllButton.WaitForAsync(
+                    new() { State = WaitForSelectorState.Visible, Timeout = 8_000 });
+                await CookieAcceptAllButton.ClickAsync();
+                await CookieAcceptAllButton.WaitForAsync(
+                    new() { State = WaitForSelectorState.Hidden, Timeout = 8_000 });
+            }
+            catch
+            {
+                // Banner not present — safe to continue
+            }
+        }
+
         public async Task SelectFromLocation(string searchText, string stationText)
         {
             await FromLocation.WaitForAsync();
