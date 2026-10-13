@@ -38,6 +38,13 @@ namespace TFL.JourneyPlanner.Tests.Pages
 
         public async Task<bool> IsWalkingAndCyclingVisible()
         {
+           await WalkingAndCyclingHeading.WaitForAsync(
+                new()
+                {
+                    State = WaitForSelectorState.Visible,
+                    Timeout = 30000
+                });
+
             return await WalkingAndCyclingHeading.IsVisibleAsync();
         }
 

@@ -16,7 +16,7 @@ namespace TFL.JourneyPlanner.Core.BrowserFactory
                 new BrowserTypeLaunchOptions
                 {
                     Headless = false,
-                    Args = new[] { "--start-maximized" }
+                    Args = new List<string> { "--start-maximized" }
                 });
         }
 
@@ -25,7 +25,7 @@ namespace TFL.JourneyPlanner.Core.BrowserFactory
             return await Browser.NewContextAsync(
                 new BrowserNewContextOptions
                 {
-                    ViewportSize = null
+                    ViewportSize = ViewportSize.NoViewport
                 });
         }
 

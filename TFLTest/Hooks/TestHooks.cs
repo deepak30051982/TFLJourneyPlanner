@@ -2,7 +2,7 @@
 using Reqnroll;
 using TFL.JourneyPlanner.Core.BrowserFactory;
 
-namespace TFL.JourneyPlanner.Tests.Helpers.Core
+namespace TFL.JourneyPlanner.Tests.Hooks
 {
     [Binding]
     public class TestHooks

@@ -9,10 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Expressium.LivingDoc.ReqnrollPlugin" Version="1.5.0" />
     <PackageReference Include="Microsoft.Playwright" Version="1.63.0" />
     <PackageReference Include="Microsoft.Playwright.MSTest" Version="1.63.0" />
     <PackageReference Include="Microsoft.Playwright.TestAdapter" Version="1.63.0" />
-    <PackageReference Include="MSTest" Version="4.0.2" />
+    <PackageReference Include="MSTest" Version="4.5.1" />
     <PackageReference Include="Reqnroll" Version="3.3.4" />
     <PackageReference Include="Reqnroll.MSTest" Version="3.3.4" />
   </ItemGroup>
