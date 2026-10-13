@@ -16,7 +16,9 @@ namespace TFL.JourneyPlanner.Tests.Pages
         private ILocator WalkingAndCyclingHeading => _page.GetByRole(AriaRole.Heading, new() { Name = "Walking and cycling" });
         private ILocator EditPreferencesButton => _page.GetByRole(AriaRole.Button, new() { Name = "Edit preferences" });
         // private ILocator LeastWalkingRadio => _page.GetByRole(AriaRole.Radio, new() { Name = "Routes with least walking" });
-        private ILocator LeastWalkingRadio => _page.Locator("#jp-search-form").Locator("#JourneyPreference_2");
+        // private ILocator LeastWalkingRadio => _page.Locator("#jp-search-form").Locator("#JourneyPreference_2");
+        private ILocator LeastWalkingRadio => _page.Locator("label[for='JourneyPreference_2']");
+
         private ILocator UpdateJourneyButton => _page.GetByRole(AriaRole.Button, new() { Name = "Update journey" });
         private ILocator JourneyTime => _page.Locator("#option-1-heading .journey-time");
         private ILocator ErrorMessage => _page.Locator("li.field-validation-error");
@@ -26,7 +28,7 @@ namespace TFL.JourneyPlanner.Tests.Pages
         public async Task SelectLeastWalkingRoute()
         {
             await EditPreferencesButton.ClickAsync();
-            await LeastWalkingRadio.CheckAsync();
+            await LeastWalkingRadio.ClickAsync();
             await UpdateJourneyButton.ClickAsync();
         }
 

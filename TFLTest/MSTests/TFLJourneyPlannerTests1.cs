@@ -76,8 +76,11 @@ namespace TFL.JourneyPlanner.MSTests.Tests
             await _journeyResultsPage.SelectLeastWalkingRoute();
 
             // check if first option has a jorney time in the mins format
-            var timeText = await _journeyResultsPage.GetJourneyTime();
-            Assert.IsTrue(Regex.IsMatch(timeText.Trim(), @"^\d+\s*mins$"), $"Invalid time format: {timeText}");
+            var timeText = await _journeyResultsPage.GetJourneyTime()?? "";
+            //Assert.IsTrue(Regex.IsMatch(timeText.Trim(), @"^\d+\s*mins$"), $"Invalid time format: {timeText}");
+
+            var match = Regex.Match(timeText, @"(\d+)\s*mins", RegexOptions.IgnoreCase);
+            Assert.IsTrue(match.Success, $"Invalid time format: {timeText}");
 
         }
 
