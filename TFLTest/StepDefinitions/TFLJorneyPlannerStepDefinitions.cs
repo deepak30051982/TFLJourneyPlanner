@@ -25,7 +25,7 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
         [Given("I am on the TfL Plan a journey page")]
         public async Task GivenIAmOnTheTfLPlanAJourneyPage()
         {
-            await _journeyPlannerPage.Goto("https://tfl.gov.uk/plan-a-journey/?cid=plan-a-journey");
+            await _journeyPlannerPage.GoToAsync("https://tfl.gov.uk/plan-a-journey/?cid=plan-a-journey");
             //I am on the right page
             //await Expect(_page).ToHaveTitleAsync(new System.Text.RegularExpressions.Regex("journey"));
            
@@ -36,17 +36,17 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
             string from,
             string to)
         {
-            await _journeyPlannerPage.SelectFromLocation("Leicester Square", from);
+            await _journeyPlannerPage.SelectFromLocationAsync("Leicester Square", from);
 
-            await _journeyPlannerPage.SelectToLocation("Covent Garden", to);
+            await _journeyPlannerPage.SelectToLocationAsync("Covent Garden", to);
 
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
         }
 
         [Then("walking and cycling options should be displayed")]
         public async Task ThenWalkingAndCyclingOptionsShouldBeDisplayed()
         {
-            bool visible = await _journeyResultsPage.IsWalkingAndCyclingVisible();
+            bool visible = await _journeyResultsPage.IsWalkingAndCyclingVisibleAsync();
 
             Assert.IsTrue(visible);
         }
@@ -54,14 +54,14 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
         [When("I choose routes with least walking")]
         public async Task WhenIChooseRoutesWithLeastWalking()
         {
-            await _journeyResultsPage.SelectLeastWalkingRoute();
+            await _journeyResultsPage.SelectLeastWalkingRouteAsync();
         }
 
         [Then("the journey results should show a journey time")]
         public async Task ThenTheJourneyResultsShouldShowAJourneyTime()
         {
             var time =
-                await _journeyResultsPage.GetJourneyTime() ?? "";
+                await _journeyResultsPage.GetJourneyTimeAsync() ?? "";
 
             var match = Regex.Match(
                 time,
@@ -76,30 +76,31 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
         [When("I open journey details")]
         public async Task WhenIOpenJourneyDetails()
         {
-            throw new NotImplementedException();
+            await _journeyResultsPage.OpenJourneyDetails();
         }
 
         [Then("complete access information should be available")]
         public async Task ThenCompleteAccessInformationShouldBeAvailable()
         {
-            throw new NotImplementedException();
+            var accessInfo = await _journeyResultsPage.GetAccessInformationAsync();
+            Assert.IsTrue(accessInfo.Any());
         }
 
         [When("I enter invalid journey locations")]
         public async Task WhenIEnterInvalidJourneyLocations()
         {
-            await _journeyPlannerPage.EnterInvalidLocations(
+            await _journeyPlannerPage.EnterInvalidLocationsAsync(
                 "Invalid From Location",
                 "Invalid To Location");
 
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
         }
 
         [Then("the planner should not show any journey results")]
         public async Task ThenThePlannerShouldNotShowAnyJourneyResults()
         {
             var error =
-                await _journeyResultsPage.GetErrorMessage();
+                await _journeyResultsPage.GetErrorMessageAsync();
 
             StringAssert.Contains(
                 error,
@@ -109,7 +110,7 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
         [When("I submit the journey planner with no locations")]
         public async Task WhenISubmitTheJourneyPlannerWithNoLocations()
         {
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
         }
 
         [Then("journey planning should not proceed")]
@@ -122,10 +123,10 @@ namespace TFL.JourneyPlanner.Tests.StepDefinitions
         public async Task ThenAnErrorMessageShouldBeDisplayed()
         {
             var fromError =
-                await _journeyPlannerPage.GetFromRequiredError();
+                await _journeyPlannerPage.GetFromRequiredErrorAsync();
 
             var toError =
-                await _journeyPlannerPage.GetToRequiredError();
+                await _journeyPlannerPage.GetToRequiredErrorAsync();
 
             Assert.AreEqual(
                 "The From field is required.",

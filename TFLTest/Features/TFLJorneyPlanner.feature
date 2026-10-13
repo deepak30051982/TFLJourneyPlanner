@@ -20,6 +20,7 @@ Scenario: Update journey preferences to least walking
 @happypath
 Scenario: View complete access information for Covent Garden station
 	When I plan a journey from "Leicester Square Underground Station" to "Covent Garden Underground Station"
+	And I choose routes with least walking
 	And I open journey details
 	Then complete access information should be available
 

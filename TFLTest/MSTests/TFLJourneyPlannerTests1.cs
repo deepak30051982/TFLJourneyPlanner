@@ -63,7 +63,7 @@ namespace TFL.JourneyPlanner.MSTests.Tests
         {
             await PlanJourney();
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-            bool isWalkingAndCyclingVisible = await _journeyResultsPage.IsWalkingAndCyclingVisible();
+            bool isWalkingAndCyclingVisible = await _journeyResultsPage.IsWalkingAndCyclingVisibleAsync();
             Assert.IsTrue(isWalkingAndCyclingVisible);
 
         }
@@ -73,10 +73,10 @@ namespace TFL.JourneyPlanner.MSTests.Tests
         {
             await PlanJourney();
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-            await _journeyResultsPage.SelectLeastWalkingRoute();
+            await _journeyResultsPage.SelectLeastWalkingRouteAsync();
 
             // check if first option has a jorney time in the mins format
-            var timeText = await _journeyResultsPage.GetJourneyTime()?? "";
+            var timeText = await _journeyResultsPage.GetJourneyTimeAsync()?? "";
             //Assert.IsTrue(Regex.IsMatch(timeText.Trim(), @"^\d+\s*mins$"), $"Invalid time format: {timeText}");
 
             var match = Regex.Match(timeText, @"(\d+)\s*mins", RegexOptions.IgnoreCase);
@@ -92,10 +92,10 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
         public async Task VerifyInvlidLocations()
         {
-            await _journeyPlannerPage.EnterInvalidLocations("Invalid From Location", "Invalid To Location");
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.EnterInvalidLocationsAsync("Invalid From Location", "Invalid To Location");
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
 
-            var errorMessage = await _journeyResultsPage.GetErrorMessage();
+            var errorMessage = await _journeyResultsPage.GetErrorMessageAsync();
             Assert.Contains("can't find", errorMessage);
 
 
@@ -105,10 +105,10 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
         public async Task VerifyNoLocations()
         {
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
 
-            var fromErrorText = await _journeyPlannerPage.GetFromRequiredError();
-            var toErrorText = await _journeyPlannerPage.GetToRequiredError();
+            var fromErrorText = await _journeyPlannerPage.GetFromRequiredErrorAsync();
+            var toErrorText = await _journeyPlannerPage.GetToRequiredErrorAsync();
 
             Assert.AreEqual("The From field is required.", fromErrorText);
             Assert.AreEqual("The To field is required.", toErrorText);
@@ -116,9 +116,9 @@ namespace TFL.JourneyPlanner.MSTests.Tests
 
         private async Task PlanJourney()
         {
-            await _journeyPlannerPage.SelectFromLocation("Leicester Square", "Leicester Square Underground Station");
-            await _journeyPlannerPage.SelectToLocation("Garden", "Covent Garden Underground Station");
-            await _journeyPlannerPage.ClickPlanJourney();
+            await _journeyPlannerPage.SelectFromLocationAsync("Leicester Square", "Leicester Square Underground Station");
+            await _journeyPlannerPage.SelectToLocationAsync("Garden", "Covent Garden Underground Station");
+            await _journeyPlannerPage.ClickPlanJourneyAsync();
         }
     }
 }

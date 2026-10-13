@@ -22,10 +22,13 @@ namespace TFL.JourneyPlanner.Tests.Pages
         private ILocator UpdateJourneyButton => _page.GetByRole(AriaRole.Button, new() { Name = "Update journey" });
         private ILocator JourneyTime => _page.Locator("#option-1-heading .journey-time");
         private ILocator ErrorMessage => _page.Locator("li.field-validation-error");
+        //private ILocator FirstJourney => _page.Locator("#option-1-content > div.journey-details");
+        // private ILocator FirstViewDetails => FirstJourney.GetByRole(AriaRole.Button, new() { Name = "View details" });
+        private ILocator FirstViewDetails => _page.Locator("div[data-journeyindex='0'] button[data-show-text='View details']");
 
         //actions
 
-        public async Task SelectLeastWalkingRoute()
+        public async Task SelectLeastWalkingRouteAsync()
         {
             await EditPreferencesButton.ClickAsync();
             await LeastWalkingRadio.ClickAsync();
@@ -36,26 +39,56 @@ namespace TFL.JourneyPlanner.Tests.Pages
 
         //getters
 
-        public async Task<bool> IsWalkingAndCyclingVisible()
+        public async Task<bool> IsWalkingAndCyclingVisibleAsync()
         {
-           await WalkingAndCyclingHeading.WaitForAsync(
-                new()
-                {
-                    State = WaitForSelectorState.Visible,
-                    Timeout = 30000
-                });
+            await WalkingAndCyclingHeading.WaitForAsync(
+                 new()
+                 {
+                     State = WaitForSelectorState.Visible,
+                     Timeout = 30000
+                 });
 
             return await WalkingAndCyclingHeading.IsVisibleAsync();
         }
 
-        public async Task<string> GetJourneyTime()
+        public async Task OpenJourneyDetails()
+        {
+            await FirstViewDetails.ClickAsync();
+        }
+
+        public async Task<string> GetJourneyTimeAsync()
         {
             return await JourneyTime.InnerTextAsync();
         }
 
-        public async Task<string> GetErrorMessage()
+        public async Task<string> GetErrorMessageAsync()
         {
             return await ErrorMessage.InnerTextAsync();
+        }
+
+        public async Task<IEnumerable<string>> GetAccessInformationAsync()
+        {
+            var heading = _page.Locator(".step-heading")
+             .Filter(new LocatorFilterOptions
+             {
+                 //AI help
+                 Has = _page.Locator("span.location-name", new()
+                 {
+                     HasTextString = "Covent Garden Underground Station"
+                 })
+             }).Nth(1);
+
+            var accessInformation = heading.Locator(".details .access-information");
+
+            var labels = await accessInformation
+                .Locator("a[aria-label]")
+                .AllAsync();
+
+            var accessInfo = new List<string>();
+            foreach (var link in labels)
+                accessInfo.Add(await link.GetAttributeAsync("aria-label") ?? "");
+
+            return accessInfo;
         }
 
 
