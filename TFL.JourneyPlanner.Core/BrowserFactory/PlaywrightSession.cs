@@ -15,7 +15,7 @@ namespace TFL.JourneyPlanner.Core.BrowserFactory
             Browser = await Playwright.Chromium.LaunchAsync(
                 new BrowserTypeLaunchOptions
                 {
-                    Headless = false,
+                    Headless = true,
                     Args = new List<string> { "--start-maximized" }
                 });
         }

@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Microsoft Windows 10.0.26300 -->
+	<!-- Expressium LivingDoc 1.5.0.0 -->
+	<!-- Reqnroll 3.3.4 -->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Expressium LivingDoc</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+		<style>
+    :root {
+        
+        /* Bootstrap Grayscale */
+        --bs-gray-075: #fdfdfe;
+        --bs-gray-075: #fefefe;
+        --bs-gray-090: #f9fafb;
+        --bs-gray-100: #f8f9fa;
+        --bs-gray-125: #f6f7f8;
+        --bs-gray-150: #f1f3f5;
+        --bs-gray-200: #e9ecef;
+        --bs-gray-300: #dee2e6;
+        --bs-gray-400: #ced4da;
+        --bs-gray-450: #bec5cc;
+        --bs-gray-500: #adb5bd;
+        --bs-gray-600: #6c757d;
+        --bs-gray-650: #565d63; /* 5b636a */;
+        --bs-gray-700: #495057;
+        --bs-gray-800: #343a40;
+        --bs-gray-900: #212529;
+
+        /* Header */
+        --color-text-header: var(--bs-gray-900);
+        --color-bg-header: #dfe7f2; /* #d4dfec */
+
+        /* Footer */
+        --color-text-footer: var(--bs-gray-600);
+        --color-bg-footer: var(--bs-gray-100);
+
+        /* Navigation */
+        --color-text-navigation: var(--bs-gray-900);
+        --color-bg-navigation: var(--bs-gray-100);
+        --color-bg-navigation-indicator: var(--bs-gray-500);
+
+        /* Tables */
+        --color-bg-table-header: var(--bs-gray-100);
+        --color-border-table-header: var(--bs-white);
+
+        /* Groups */
+        --color-bg-group: var(--bs-gray-075);
+        --color-border-group: #ECECEC;
+
+        /* Outlines */
+        --color-border-grid: #ECECEC;
+        --color-border-splitter: #ECECEC;
+
+        /* Surfaces */
+        --color-bg-hover: #F5F8FC;
+        --color-bg-selected: #EEF4FA;
+
+        /* Scrollbars */
+        --color-text-scrollbar: #969696;
+        --color-bg-scrollbar: var(--bs-white);
+
+        /* Texts */
+        --color-text: var(--bs-gray-900);
+        --color-text-darkgray: var(--bs-gray-700);
+        --color-text-gray: var(--bs-gray-600);
+
+        /* Special Texts */
+        --color-text-keyword: #25576b;
+        --color-text-link: #295f75;
+
+        /* Tags */
+        --color-text-tag: #338689;
+        --color-bg-tag: #eef4f8;
+
+        /* Badges */
+        --color-text-badge: var(--bs-white);
+        --color-bg-badge: #969696;
+
+        /* Buttons */
+        --color-text-button: var(--bs-gray-900);
+        --color-bg-button: var(--bs-gray-090);
+        --color-border-button: var(--bs-gray-400);
+        --color-text-button-inactive: var(--bs-gray-600);
+        --color-bg-button-inactive: var(--bs-gray-090);
+        --color-border-button-inactive: var(--bs-gray-300);
+        --color-text-button-hover: var(--bs-gray-900);
+        --color-bg-button-hover: var(--bs-gray-100);
+        --color-border-button-hover: var(--bs-gray-500);
+        --color-bg-button-selected: var(--color-bg-selected);
+
+        /* Status colors */
+        --color-passed: #47A64E;
+        --color-incomplete: #F7C21A;
+        --color-failed: #E84330;
+        --color-skipped: #9E9E9E;
+
+        --color-passed: #45A14B;
+        --color-incomplete: #F5C01A;
+        --color-failed: #E6422F;
+        --color-skipped: #9C9C9C;
+
+        --color-total: var(--bs-gray-900);
+
+        /* Status backgrounds */
+        --color-bg-passed: #EAF6EB;
+        --color-bg-incomplete: #FFF6D8;
+        --color-bg-failed: #FAE8E5;
+        --color-bg-skipped: #F0F2F4;
+
+        /* Status texts */
+        --color-text-passed: #2C5F30;
+        --color-text-incomplete: #8A6500;
+        --color-text-failed: #9E2B21;
+        --color-text-skipped: var(--bs-gray-700);
+    }
+   
+    body, html {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        font-size: 16px;
+        color: var(--color-text);
+        /* font-family: system-ui, "Segoe UI Variable Small", "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+    }
+   
+    header {
+        padding: 0.50em 1.00em;
+        color: var(--color-text-header);
+        background-color: var(--color-bg-header);
+    }
+
+    .project-name {
+        font-size: 1.375em;
+        font-weight: bold;
+    }
+
+    .project-date {
+        color: var(--color-text-darkgray);      
+        padding-left: 0.125em;
+    }
+
+    .navigation {
+        padding: 0.50em 1.00em;
+        background-color: var(--color-bg-navigation);
+        border-bottom: 1px solid var(--color-border-splitter);
+    }
+
+    a.navigation-link {
+        color: var(--color-text-navigation);
+        position: relative;
+        padding-left: 0.0625em;
+        padding-right: 0.0625em;
+        margin-right: 0.75em;
+        font-size: 1.0625em;
+        text-decoration: none; /* remove default underline */
+    }
+
+    a.navigation-link.active {
+        font-weight: 600;
+        font-size: 1.125em;
+    }
+
+    a.navigation-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.60em; /* adjust spacing under text */
+        width: 100%;
+        height: 2px;  /* thickness of line */
+        background-color: var(--color-bg-navigation-indicator);
+    }
+
+    .splitter-wrapper {
+        display: flex;
+        height: calc(100% - 9.75em); /* Adjust for header and footer height */
+        flex-direction: row; /* Change to row for vertical splitter */
+        border-bottom: 1px solid var(--color-border-splitter);
+    }
+
+    #splitter {
+        width: 2px;
+        background: var(--color-border-splitter);
+        cursor: col-resize;
+    }
+
+    #splitter-left {
+        flex: 1;
+        overflow: hidden;
+        scrollbar-color: var(--color-text-scrollbar) var(--color-bg-scrollbar);
+    }
+
+    #splitter-right {
+        flex: 1;
+        overflow: auto;
+        scrollbar-color: var(--color-text-scrollbar) var(--color-bg-scrollbar);
+    }
+
+    footer {
+        background-color: var(--color-bg-footer);
+        text-align: center;
+        padding: 0.50em;
+    }
+
+    footer a {
+        color: var(--color-text-footer);
+        font-size: 0.875em;
+    }
+
+    .section {
+        padding-bottom: 0.50em;
+    }
+
+    .layout-row {
+        display: flex;
+        width: 100%;
+    }
+
+    .layout-column {
+        flex: auto;
+    }
+
+    .align-left {
+        text-align: left;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .filter-group {
+        background-color: var(--color-bg-group);
+        padding: 0.5em;
+        margin-top: 0.125em;
+        margin-bottom: 0.50em;
+        align-items: center;
+        border-radius: 1.25em;
+        border: 1px solid var(--color-border-group);
+    }
+
+    .filter-symbol {
+        padding-left: 0.25em;
+        padding-right: 0.375em;
+        color: var(--color-text-gray);
+    }
+
+    .filter-keywords {
+        width: 100%;
+        box-sizing: border-box;
+        border-width: 1px;
+        outline: none;
+        background-color: var(--color-bg-group);
+        border: hidden;
+    }
+
+    #filter-list {
+        flex: 1;
+        overflow: auto;
+        height: calc(100% - 4.75em); /* Adjust for filter and search height */
+        padding-right: 0.375em;
+    }
+
+    th, td {
+        padding: 4px 4px;
+    }
+
+    th {
+        background-color: var(--color-bg-table-header);
+        border: 1px solid var(--color-border-table-header);
+        font-weight: 600;
+    }
+    
+    table.tree-view {
+        width: 100%;
+    }
+
+    table.list-view {
+        width: 100%;
+        margin-top: 0.125em;
+    }
+
+    table.list-view tr:hover,
+    table.tree-view tr:hover td.grid-border {
+        background-color: var(--color-bg-hover);
+    }
+
+    table.list-view th,
+    table.list-view td {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+   
+    table.tree-view td {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    table.tree-view td.grid-border { 
+        padding-left: 4px;
+        padding-right: 2px;
+    }
+
+    table.tree-view tr.active td.grid-border {
+        background-color: var(--color-bg-selected);
+    }
+
+    table.list-view tr.active {
+        background-color: var(--color-bg-selected);
+    }
+
+    /* Buttons */
+    button {
+        color: var(--color-text-button);
+        border: 1px solid var(--color-border-button);
+        background-color: var(--color-bg-button);
+        border-radius: 0.5em;
+        padding: 2px 6px;
+    }
+
+    button.filter-option {
+        display: inline-flex;              /* enables centering */
+        align-items: center;               /* vertical centering */
+    }
+
+    /* Hover Buttons */
+    button:hover {
+        color: var(--color-text-button-hover);
+        border: 1px solid var(--color-border-button-hover);
+        background-color: var(--color-bg-button-hover);
+    }
+
+    /* Inactive Option Buttons */
+    button.filter-option:not(.active) {
+        color: var(--color-text-button-inactive);
+        border: 1px solid var(--color-border-button-inactive);
+        background-color: var(--color-bg-button-inactive);
+    }
+
+    /* Hover Option Buttons */
+    button.filter-option:hover {
+        color: var(--color-text-button-hover);
+        border: 1px solid var(--color-border-button-hover);
+        background-color: var(--color-bg-button-selected);
+    }
+
+    /* Active Option Buttons */
+    button.filter-option.active {
+        color: var(--color-text-button);
+        border: 1px solid var(--color-border-button);
+        background-color: var(--color-bg-button-selected);
+    }
+
+    .grid-folder {
+        text-align: center;
+        width: 1.5em;
+    }
+
+    .grid-folder-name {
+        color: var(--color-text-gray);
+        font-weight: 500;
+    }
+
+    .grid-expand,
+    .grid-collapse,
+    .scenario-stacktraces,
+    .scenario-attachments,
+    .scenario-history,
+    .scenario-backgrounds {
+        padding: 1px 4px;
+        font-size: 0.9625em;
+        color: var(--color-text-button-inactive);
+    }
+
+    .grid-border {
+        border-bottom: 1px solid var(--color-border-grid);
+    }
+
+    .grid-toggle {
+        color: var(--color-text-gray);
+        cursor: pointer;
+        text-align: center;
+        width: 1.5em;
+    }
+    
+    .grid-indent {
+        width: 1.25em;
+    }
+
+    .page-name {
+        font-size: 1.375em;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    .chart-name {
+        font-size: 1.25em;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    .chart-outline {
+        width: fit-content;
+        margin: auto;
+        padding: 1.5em 2.0em;
+        background-color: var(--color-bg-group);
+        border-radius: 1.00em;
+        border: 1px solid var(--color-border-group);
+    }
+
+    .chart-filter {
+        padding: 1.0em 1.0em;
+        padding-bottom: 0.5em;
+        background-color: var(--color-bg-group);
+        border-radius: 1.00em;
+        border: 1px solid var(--color-border-group);
+        margin-bottom: 0.50em;
+    }
+
+    .chart-status {
+      width: 160px;
+      height: 164px;
+    }
+
+    .chart-number {
+        font-size: 0.5em;
+        text-anchor: middle;
+        transform: translateY(-0.25em);
+    }
+
+    .chart-label {
+        font-size: 0.325em;
+        text-anchor: middle;
+        transform: translateY(0.7em);
+    }
+
+    .chart-text {
+        transform: translateY(0.15em);
+    }
+
+    .chart-count {
+        text-align: center;
+    }
+
+    .chart-count-number {
+        font-size: 1.25em;
+        line-height: 1.0;
+    }
+
+    .chart-count-percentage {
+        font-size: 1.125em;
+        line-height: 1.0;
+    }
+
+    .chart-count-status {
+        font-size: 1.125em;
+        line-height: 1.0;
+    }
+
+    .chart-count-bar {
+        width: 110px;
+        height: 0.475em;
+    }
+
+
+    .chart-health {
+        text-align: center;
+    }
+
+    .chart-health-number {
+        font-size: 1.125em;
+    }
+
+    .chart-health-percentage {
+        font-size: 1.0625em;
+    }
+
+    .chart-health-status {
+        font-size: 1.0625em;
+    }
+
+    .chart-health-bar {
+        width: 96px;
+        height: 0.475em;
+    }
+
+    a {
+        color: var(--color-text-link);
+        text-decoration: none;
+    }
+
+    .color-passed {
+        color: var(--color-passed);
+    }
+
+    .bgcolor-passed {
+        background: var(--color-passed);
+    }
+
+    .color-incomplete {
+        color: var(--color-incomplete);
+    }
+
+    .bgcolor-incomplete {
+        background: var(--color-incomplete);
+    }
+
+    .color-failed {
+        color: var(--color-failed);
+    }
+
+    .bgcolor-failed {
+        background: var(--color-failed);
+    }
+
+    .color-skipped {
+        color: var(--color-skipped);
+    }
+
+    .bgcolor-skipped {
+        background: var(--color-skipped);
+    }
+
+    .color-total {
+        color: var(--color-total);
+    }
+
+    .bgcolor-total {
+        background: var(--color-total);
+    }
+
+    .color-health {
+        color: var(--color-text-darkgray);
+    }
+
+    .bgcolor-health {
+        background: #A7A7A7;
+    }
+
+    .status-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .status-pill {
+      display: inline-flex;              /* enables centering */
+      align-items: center;               /* vertical centering */
+      justify-content: center;           /* horizontal centering */
+      color: white;
+      font-size: 0.8125em;
+      font-weight: 600;
+      padding: 0.0625em 0.625em;
+      border-radius: 999px;
+      /* margin-right: 0.375em; */
+    }
+
+    .status-symbol {
+        font-size: 1.0em;
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    button.filter-option .status-symbol {
+        margin-right: 3px;
+    }
+
+    .health-symbol {
+        color: var(--color-text-gray);
+    }
+
+    .clear-symbol {
+        color: var(--color-text-gray);
+        font-weight: 600;
+    }
+
+    .sort-column {
+        float: right;
+        font-weight: normal;
+    }
+
+    ul {
+        list-style-type: none;
+        margin-bottom: 0px;
+    }
+
+    .donut-segment-passed {
+        stroke: var(--color-passed);
+        fill: transparent;
+        stroke-width: 0.21em;
+    }
+
+    .donut-segment-incomplete {
+        stroke: var(--color-incomplete);
+        fill: transparent;
+        stroke-width: 0.21em;
+    }
+
+    .donut-segment-failed {
+        stroke: var(--color-failed);
+        fill: transparent;
+        stroke-width: 0.21em;
+    }
+
+    .donut-segment-skipped {
+        stroke: var(--color-skipped);
+        fill: transparent;
+        stroke-width: 0.21em;
+    }
+
+    hr {
+        border: 0 none;
+        margin-top: 0.50em;
+        margin-bottom: 0.50em;
+    }
+
+    .feature-tag,
+    .rule-tag,
+    .scenario-tag,
+    .scenario-tag-health {
+        color: var(--color-text-tag);
+        background: var(--color-bg-tag);
+        border-radius: 0.375em;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        padding-left: 7px;
+        padding-right: 8px;
+        font-size: 0.9375em;
+    }
+
+    .feature-tag-group,
+    .rule-tag-group,
+    .scenario-tag-group {
+        padding-bottom: 0.25em;
+    }
+
+    .feature-keyword,
+    .background-keyword,
+    .rule-keyword,
+    .scenario-keyword,
+    .step-keyword {
+        color: var(--color-text-keyword);
+        font-weight: 600;
+    }
+
+    .feature-name,
+    .rule-name,
+    .scenario-name {
+        font-weight: 600;
+    }
+
+    .feature-description,
+    .rule-description,
+    .scenario-description {
+        font-size: 0.9375em;
+        color: var(--color-text-gray);
+        font-style: italic;
+        padding-top: 2px;
+    }
+
+    .feature-duration,
+    .scenario-duration {
+        color: var(--color-text-gray);
+        padding-left: 4px;
+        padding-right: 5px;
+        font-size: 0.9375em;
+    }
+
+    .scenario-badge {
+        width: 1.80em;
+        height: 1.80em;
+        font-weight: 600;
+        border-radius: 50%;
+        color: var(--color-text-badge);
+        background-color: var(--color-bg-badge);
+        text-align: center;
+        line-height: 1.80em; /* Centers the text vertically */
+        font-size: 0.8125em;
+        display: inline-block; /* Allows the circle to be displayed inline */
+        margin-left: 3px;
+    }
+
+    .step-symbol {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .scenario-steps {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    ul.scenario-steps li {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .steps-datatable {
+        padding-left: 32px;
+    }
+
+    .scenario-datatable {
+        color: var(--color-text-gray);
+    }
+
+    table.scenario-datatable td {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .message-box {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 2px;
+        padding-right: 2px;
+        max-width: inherit;
+        word-wrap: break-word;
+    }
+
+    .message-header {
+        font-weight: bold;
+    }
+
+    .message-passed {
+        color: var(--color-text-passed);
+        background-color: var(--color-bg-passed);
+        padding: 8px;
+        border-left: 8px solid var(--color-passed);
+    }
+
+    .message-failed {
+        color: var(--color-text-failed);
+        background-color: var(--color-bg-failed);
+        padding: 8px;
+        border-left: 8px solid var(--color-failed);
+    }
+
+    .message-incomplete {
+        color: var(--color-text-incomplete);
+        background-color: var(--color-bg-incomplete);
+        padding: 8px;
+        border-left: 8px solid var(--color-incomplete);
+    }
+
+    .message-skipped {
+        color: var(--color-text-skipped);
+        background-color: var(--color-bg-skipped);
+        padding: 8px;
+        border-left: 8px solid var(--color-skipped);
+    }
+
+    .message-stacktrace {
+        font-size: 0.875em;
+    }
+
+    .examples-keyword {
+        font-weight: 600;
+        color: var(--color-text-gray);
+        padding-left: 16px;
+    }
+
+    .examples-name {
+        color: var(--color-text-gray);
+    }
+
+    .examples-description {
+        font-size: 0.9375em;
+        color: var(--color-text-gray);
+        font-style: italic;
+        padding-left: 32px;
+    }
+
+    .examples-datatable {
+        padding-left: 32px;
+    }
+
+    .history,
+    .attachments {
+        padding-top: 4px;
+    }
+
+    .history-keyword,
+    .attachments-keyword {
+        font-weight: 600;
+        color: var(--color-text-gray);
+        padding-left: 16px;
+    }
+
+    ul.history-files li,
+    ul.attachments-files li {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .history-files li {
+        color: var(--color-text-darkgray);
+    }
+
+    .attachment-symbol {
+        color: var(--color-text-gray);
+    }
+
+    .duration-symbol {
+        color: var(--color-text-gray);
+        font-size: 2.5em;
+    }
+
+    .duration-text {
+        font-size: 1.25em;
+        padding-left: 8px;
+        padding-top: 4px;
+        color: var(--color-text-gray);
+    }
+
+    .duration-keyword {
+        color: var(--color-text-gray);
+    }
+
+    .history-passed {
+        color: var(--color-text-passed);
+        background-color: var(--color-bg-passed);
+        text-align: center;
+        width: 100px;
+    }
+
+    .history-failed {
+        color: var(--color-text-failed);
+        background-color: var(--color-bg-failed);
+        text-align: center;
+        width: 100px;        
+    }
+
+    .history-incomplete {
+        color: var(--color-text-incomplete);
+        background-color: var(--color-bg-incomplete);
+        text-align: center;
+        width: 100px;
+    }
+
+    .history-skipped {
+        color: var(--color-text-skipped);
+        background-color: var(--color-bg-skipped);
+        text-align: center;
+        width: 100px;
+    }
+
+    .history-unknown {
+        text-align: center;
+        width: 100px;
+    }
+
+    .analytics-trends,
+    .analytics-healths {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: auto;
+    }
+
+    .analytics-list {
+        width: 100%;
+    }
+
+    table.analytics-list th,
+    table.analytics-list td {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    table.analytics-list td {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    .analytics-list td {
+        border: 1px solid var(--color-border-table-header);
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 1.0em;
+        padding-bottom: 0.0em;
+    }
+
+		</style>
+		<script>
+        function loadScenario(x) {
+            var featureId = x.getAttribute('data-featureid');
+            var scenarioId = x.getAttribute('data-scenarioid');
+            var feature = document.getElementById(featureId).innerHTML;
+            var scenario = document.getElementById(scenarioId).innerHTML;
+
+            document.getElementById('splitter-right').innerHTML = feature + scenario;
+
+            clearActiveListItems();
+            x.classList.add('active');
+
+            document.getElementById("splitter-right").scrollTop = 0;
+        }
+    
+		</script>
+		<script>
+        function loadFeature(x) {
+            var featureId = x.getAttribute('data-featureid');
+            var feature = document.getElementById(featureId).innerHTML;
+            var table = document.getElementById("project-view");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "scenario") {
+                    var parentId = tr[i].getAttribute('data-featureid');
+                    if (featureId == parentId) {
+                        var scenarioId = tr[i].getAttribute('data-scenarioid');
+                        feature = feature.concat(document.getElementById(scenarioId).innerHTML);
+                    }
+                }
+            }
+
+            document.getElementById('splitter-right').innerHTML = feature;
+
+            var rules = document.getElementById('splitter-right').querySelectorAll('[data-rule-replica]');
+            for (var i = 0; i < rules.length; i++)
+                rules[i].style.display = "none";
+
+            clearActiveListItems();
+            x.classList.add('active');
+
+            document.getElementById("splitter-right").scrollTop = 0;
+        }
+    
+		</script>
+		<script>
+        function clearActiveListItems() {
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+            for (var i = 0; i < tr.length; i++) {
+                tr[i].classList.remove('active');
+            }
+        }
+    
+		</script>
+		<script>
+        function loadViewMode(x, y) {
+            var filterlist = document.getElementById(x).innerHTML;
+
+            document.getElementById('filter-list').innerHTML = filterlist;
+
+            var exists = document.getElementById('view-title');
+            if (exists)
+                document.getElementById('view-title').innerHTML = y;
+
+            var navLinks = document.querySelectorAll('.navigation-link');
+            for (var i = 0; i < navLinks.length; i++) {
+                if (navLinks[i].textContent == y)
+                    navLinks[i].classList.add('active');
+                else
+                    navLinks[i].classList.remove('active');
+            }
+
+            filterView();
+            ScrollFilterListToTop();
+            loadAnalytics();
+        }
+    
+		</script>
+		<script>
+        function loadAnalytics() {
+            var navLinkActive = document.querySelectorAll('a.navigation-link.active');
+            if (navLinkActive.length > 0) {
+                var name = navLinkActive[0].textContent.toLowerCase();
+
+                if (name == "overview") {
+                    var analytics = document.getElementById("analytics-scenarios").innerHTML;
+                    document.getElementById('splitter-right').innerHTML = analytics;
+                } else {
+                    var analytics = document.getElementById("analytics-" + name).innerHTML;
+                    document.getElementById('splitter-right').innerHTML = analytics;
+                }
+            }
+            else {
+                var analytics = document.getElementById("analytics-scenarios").innerHTML;
+                document.getElementById('splitter-right').innerHTML = analytics;
+            }
+
+            clearActiveListItems();
+
+            document.getElementById("splitter-right").scrollTop = 0;
+        }
+    
+		</script>
+		<script>
+        function filterView() {
+            var navLinkActive = document.querySelectorAll('a.navigation-link.active');
+            if (navLinkActive.length > 0) {
+                name = navLinkActive[0].textContent.toLowerCase();
+
+                if (name == "overview") {
+                    filterDataByRole("scenario");
+                    filterDataFeatures();
+                    filterDataFolders();
+                }
+                else if (name == "features") {
+                    filterDataByRole("feature");
+                }
+                else if (name == "scenarios") {
+                    filterDataByRole("scenario");
+                }
+                else if (name == "steps") {
+                    filterDataByRole("step");
+                }
+                else {
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function filterDataByRole(roleType) {
+            var input = document.getElementById("filter-by-keywords");
+            var filterTokens = input.value.toUpperCase().split(/\s+/);
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+
+            var statuses = [];
+            var prefilters = document.getElementsByTagName("button");
+            for (var i = 0; i < prefilters.length; i++) {
+                var prefilter = prefilters[i].getAttribute("data-prefilter");
+                var active = prefilters[i].className.includes(" active");
+                if (active) {
+                    statuses.push(prefilter);
+                }
+            }
+
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+                var tags = tr[i].getAttribute("data-tags");
+                var td = tr[i].getElementsByTagName("td");
+                var rowText = "";
+                var found = false;
+
+                if (role == null)
+                    continue;
+
+                if (role != roleType)
+                    continue;
+
+                for (var j = 0; j < td.length; j++) {
+                    rowText += td[j].textContent.toUpperCase() + " ";
+                }
+
+                var tagTokens = tags.toUpperCase().split(/\s+/);
+                for (var t = 0; t < tagTokens.length; t++) {
+                    rowText += tagTokens[t].toUpperCase() + " ";
+                }
+
+                found = filterTokens.every(token => rowText.includes(token));
+
+                var hasPrefilter = false;
+                for (var t = 0; t < statuses.length; t++) {
+                    var prefilter = statuses[t];
+                    if (rowText.includes(prefilter.toUpperCase())) {
+                        hasPrefilter = true;
+                    }
+                }
+
+                if (statuses.length > 0 && !hasPrefilter) {
+                    found = false;
+                }
+
+                tr[i].style.display = found ? "" : "none";
+            }
+        }
+    
+		</script>
+		<script>
+        function filterDataFeatures() {
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+
+            // Hide all features first
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "feature")
+                    tr[i].style.display = "none";
+            }
+
+            var features = [];
+
+            // Collect all features that have visible scenarios
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "scenario") {
+                    if (tr[i].style.display == "") {
+                        var parent = tr[i].getAttribute("data-parent");
+                        features.push(parent);
+                    }
+                }
+            }
+
+            // Show features that have visible scenarios
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "feature") {
+                    var name = tr[i].getAttribute("data-name");
+                    if (features.includes(name))
+                        tr[i].style.display = "";
+                }
+            }
+
+            // Collapse scenarios under features if the feature is collapsed
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+                if (role == "feature") {
+                    if (tr[i].style.display == "") {
+                        var featureId = tr[i].getAttribute('data-featureid');
+                        var collapse = tr[i].getAttribute('data-collapse');
+                        if (collapse == "true") {
+                            for (var g = 0; g < tr.length; g++) {
+                                var scenarioRole = tr[g].getAttribute("data-role");
+                                if (scenarioRole == "scenario") {
+                                    var featureIdSlave = tr[g].getAttribute('data-featureid');
+                                    if (featureId == featureIdSlave) {
+                                        tr[g].style.display = "none";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function filterDataFolders() {
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+
+            var features = table.querySelectorAll('[data-role="feature"]');
+
+            // Display all folder first and reset attributes
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "folder") {
+                    tr[i].style.display = "";
+                    tr[i].setAttribute('has-folders', 'false');
+                    tr[i].setAttribute('has-features', 'false');
+                }
+            }
+
+            var foldersDataParents = [];
+
+            // Collect all folders that have visible features
+            for (var i = 0; i < features.length; i++) {
+                if (features[i].style.display == "") {
+                    var parent = features[i].getAttribute("data-parent");
+                    foldersDataParents.push(parent);
+                }
+            }
+
+            // Set folders that have visible features
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "folder") {
+                    var name = tr[i].getAttribute("data-name");
+                    if (foldersDataParents.includes(name))
+                        tr[i].setAttribute('has-features', 'true');
+                }
+            }
+
+            // Set folders that have subsequent folders
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "folder") {
+                    var folderPath = tr[i].getAttribute('data-name');
+
+                    for (var s = 0; s < tr.length; s++) {
+                        var srole = tr[s].getAttribute("data-role");
+
+                        if (srole == "folder") {
+                            var sfolderPath = tr[s].getAttribute('data-name');
+                            if (sfolderPath != folderPath) {
+                                if (sfolderPath.startsWith(folderPath)) {
+                                    tr[i].setAttribute('has-folders', 'true');
+                                }
+                            }
+                        }                       
+                    }
+                }
+            }
+
+            // Hide folders that have invisible folders and features
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "folder") {
+                    var hasFolders = tr[i].getAttribute('has-folders');
+                    var hasFeatures = tr[i].getAttribute('has-features');
+                    if (hasFolders == "false" && hasFeatures == "false")
+                        tr[i].style.display = "none";
+                }
+            }
+
+            // Hide folders that have no visible subfolders
+            filterSubFolder(tr);
+            filterSubFolder(tr);
+        }
+    
+		</script>
+		<script>
+        function filterSubFolder(tr) {
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+                if (role == "folder") {
+                    var hasFolders = tr[i].getAttribute('has-folders');
+                    var hasFeatures = tr[i].getAttribute('has-features');
+                    if (hasFolders == "true" && hasFeatures == "false") {
+                        var folderPath = tr[i].getAttribute('data-name');
+
+                        var hasVisibleSubfolders = false;
+
+                        for (var s = 0; s < tr.length; s++) {
+                            var srole = tr[s].getAttribute("data-role");
+                            if (srole == "folder") {
+                                var sfolderPath = tr[s].getAttribute('data-name');
+                                if (sfolderPath != folderPath) {
+                                    if (sfolderPath.startsWith(folderPath)) {
+                                        if (tr[s].style.display == "") {
+                                            hasVisibleSubfolders = true;
+                                        }
+                                    }
+                                }
+                            }                       
+                        }
+
+                        if (!hasVisibleSubfolders) {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function sortTableByColumn(n) {
+            var table = document.getElementById("table-grid");
+            var count = 0;
+            var switching = true;
+            var direction = "ascending";
+
+            while (switching) {
+                switching = false;
+                var rows = table.rows;
+
+                for (var i = 1; i < (rows.length - 1); i++) {
+                    var Switch = false;
+
+                    var x = rows[i].getElementsByTagName("td")[n];
+                    var y = rows[i + 1].getElementsByTagName("td")[n];
+
+                    if (direction == "ascending") {
+
+                        if (x.innerHTML.toLowerCase() >
+                            y.innerHTML.toLowerCase()) {
+
+                            Switch = true;
+                            break;
+                        }
+                    } else if (direction == "descending") {
+
+                        if (x.innerHTML.toLowerCase() <
+                            y.innerHTML.toLowerCase()) {
+
+                            Switch = true;
+                            break;
+                        }
+                    }
+                }
+                if (Switch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+
+                    count++;
+                } else {
+                    if (count == 0 && direction == "ascending") {
+                        direction = "descending";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function sortTableByColumnByAttibute(n, a) {
+            var table = document.getElementById("table-grid");
+            var count = 0;
+            var switching = true;
+
+            var direction = "ascending";
+
+            while (switching) {
+                switching = false;
+                var rows = table.rows;
+
+                for (var i = 1; i < (rows.length - 1); i++) {
+                    var Switch = false;
+
+                    var x = rows[i].getElementsByTagName("td")[n];
+                    var y = rows[i + 1].getElementsByTagName("td")[n];
+
+                    if (direction == "ascending") {
+
+                        if (x.getAttribute(a) >
+                            y.getAttribute(a)) {
+
+                            Switch = true;
+                            break;
+                        }
+                    } else if (direction == "descending") {
+
+                        if (x.getAttribute(a) <
+                            y.getAttribute(a)) {
+
+                            Switch = true;
+                            break;
+                        }
+                    }
+                }
+                if (Switch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+
+                    count++;
+                } else {
+                    if (count == 0 && direction == "ascending") {
+                        direction = "descending";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function loadCollapse(x) {
+            var collapse = x.getAttribute('data-collapse');
+            var parent = x.parentElement;
+
+            if (collapse == "false") {
+                x.innerHTML = "<span class='bi bi-chevron-right'></span>";
+                x.setAttribute('data-collapse', 'true');
+                parent.setAttribute('data-collapse', 'true');
+            } else {
+                x.innerHTML = "<span class='bi bi-chevron-down'></span>";
+                x.setAttribute('data-collapse', 'false');
+                parent.setAttribute('data-collapse', 'false');
+            }
+
+            filterView();
+        }
+    
+		</script>
+		<script>
+        function loadCollapseAll() {
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "feature") {
+                    var cells = tr[i].getElementsByTagName("td");
+
+                    for (var a = 0; a < cells.length; a++) {
+                        var collapse = cells[a].getAttribute('data-collapse');
+
+                        if (collapse == "false") {
+                            cells[a].innerHTML = "<span class='bi bi-chevron-right'></span>";
+                            cells[a].setAttribute('data-collapse', 'true');
+                            tr[i].setAttribute('data-collapse', 'true');
+                        }
+                    }
+                }
+            }
+
+            filterView();
+        }
+    
+		</script>
+		<script>
+        function loadExpandAll() {
+            var table = document.getElementById("table-list");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var role = tr[i].getAttribute("data-role");
+
+                if (role == "feature") {
+                    var cells = tr[i].getElementsByTagName("td");
+
+                    for (var a = 0; a < cells.length; a++) {
+                        var collapse = cells[a].getAttribute('data-collapse');
+
+                        if (collapse == "true") {
+                            cells[a].innerHTML = "<span class='bi bi-chevron-down'></span>";
+                            cells[a].setAttribute('data-collapse', 'false');
+                            tr[i].setAttribute('data-collapse', 'false');
+                        }
+                    }
+                }
+            }
+
+            filterView();
+        }
+    
+		</script>
+		<script>
+        function togglePrefilter(x) {
+            var attribute = x.className;
+
+            if (attribute.includes(" active")) {
+                x.className = x.className.replace(" active", "");
+            } else {
+                x.className += " active";
+            }
+
+            filterView();
+        }
+    
+		</script>
+		<script>
+        function clearAllfilters() {
+            var prefilters = document.getElementsByTagName("button");
+            for (var i = 0; i < prefilters.length; i++) {
+                var prefilter = prefilters[i].getAttribute("data-prefilter");
+                var active = prefilters[i].className.includes(" active");
+                if (active) {
+                    prefilters[i].className = prefilters[i].className.replace(" active", "");
+                }
+            }
+
+            var input = document.getElementById("filter-by-keywords");
+            input.value = '';
+
+            clearActiveListItems();
+            filterView();
+            ScrollFilterListToTop();
+            loadAnalytics();
+        }
+    
+		</script>
+		<script>
+        function ScrollFilterListToTop() {
+            document.getElementById("filter-list").scrollTop = 0;
+        }
+    
+		</script>
+		<script>
+        function toggleBackgrounds(x) {
+            var grandParent = x.parentElement?.parentElement;
+            if (!grandParent) return;
+
+            var items = grandParent.getElementsByClassName('backgrounds');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].style.display === "none") {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function toggleAttachments(x) {
+            var grandParent = x.parentElement?.parentElement;
+            if (!grandParent) return;
+
+            var items = grandParent.getElementsByClassName('attachments');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].style.display === "none") {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function toggleHistory(x) {
+            var grandParent = x.parentElement?.parentElement;
+            if (!grandParent) return;
+
+            var items = grandParent.getElementsByClassName('history');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].style.display === "none") {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function toggleStacktraces(x) {
+            var grandParent = x.parentElement?.parentElement;
+            if (!grandParent) return;
+
+            var stacktraces = grandParent.getElementsByClassName('stacktraces');
+            for (var i = 0; i < stacktraces.length; i++) {
+                if (stacktraces[i].style.display === "none") {
+                    stacktraces[i].style.display = "block";
+                } else {
+                    stacktraces[i].style.display = "none";
+                }
+            }
+        }
+    
+		</script>
+		<script>
+        function onloadFilter() {
+            const filter = new URLSearchParams(window.location.search).get('filterByKeywords');
+            if (!filter) 
+                return;
+
+            var input = document.getElementById("filter-by-keywords");
+            if (input) {
+                input.value = filter;
+                filterView();
+
+                var table = document.getElementById("table-list");
+                var tr = table.getElementsByTagName("tr");
+
+                for (var i = 0; i < tr.length; i++) {
+                    var role = tr[i].getAttribute("data-role");
+                    if (role == "scenario") {
+                        if (tr[i].style.display == "") {
+                            var featureId = tr[i].getAttribute('data-featureid');
+                            var scenarioId = tr[i].getAttribute('data-scenarioid');
+                            var feature = document.getElementById(featureId).innerHTML;
+                            var scenario = document.getElementById(scenarioId).innerHTML;
+
+                            document.getElementById('splitter-right').innerHTML = feature + scenario;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    
+		</script>
+	</head>
+	<body onload="loadViewMode('project-view','Overview'); loadAnalytics(); onloadFilter()">
+		
+		<!-- Header Section -->
+		<header>
+			<span class="project-name">TFL Journey Planner Tests</span>
+			<br>
+			<span class="project-date">Generated Wed 14 Oct 2026 at 22:24:23 GMT+1</span>
+		</header>
+		
+		<!-- Project Navigation Section -->
+		<nav class="navigation">
+			<a class="navigation-link" title="Overview" href="#" onclick="loadViewMode('project-view','Overview');">Overview</a>
+			<a class="navigation-link" title="Features List View" href="#" onclick="loadViewMode('features-view','Features');">Features</a>
+			<a class="navigation-link" title="Scenarios List View" href="#" onclick="loadViewMode('scenarios-view','Scenarios');">Scenarios</a>
+			<a class="navigation-link" title="Steps List View" href="#" onclick="loadViewMode('steps-view','Steps');">Steps</a>
+			<a class="navigation-link" title="Analytics" href="#" onclick="loadAnalytics()">Analytics</a>
+		</nav>
+		
+		<!-- Splitter Wrapper Section -->
+		<div class="splitter-wrapper">
+			
+			<!-- Left Splitter Section -->
+			<div id="splitter-left" class="bg-white p-3">
+				
+				<!-- Status Filters Section -->
+				<div class="section layout-row">
+					
+					<!-- View Title Section -->
+					<div class="layout-column align-left">
+						<span id="view-title" class="page-name">Overview</span>
+					</div>
+					<div class="layout-column align-right">
+						<button class="filter-option" data-prefilter="@Passed" title="Preset Filter with Passed" onclick="togglePrefilter(this)">
+							<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+							<span>Passed</span>
+						</button>
+						<button class="filter-option" data-prefilter="@Incomplete" title="Preset Filter with Incomplete" onclick="togglePrefilter(this)">
+							<span class="bi bi-exclamation-circle-fill color-incomplete status-symbol"></span>
+							<span>Incomplete</span>
+						</button>
+						<button class="filter-option" data-prefilter="@Failed" title="Preset Filter with Failed" onclick="togglePrefilter(this)">
+							<span class="bi bi-x-circle-fill color-failed status-symbol"></span>
+							<span>Failed</span>
+						</button>
+						<button class="filter-option" data-prefilter="@Skipped" title="Preset Filter with Skipped" onclick="togglePrefilter(this)">
+							<span class="bi bi-dash-circle-fill color-skipped status-symbol"></span>
+							<span>Skipped</span>
+						</button>
+						<button title="Clear All Filters" onclick="clearAllfilters()">
+							<span>Clear</span>
+						</button>
+					</div>
+				</div>
+				
+				<!-- Search Filter Section -->
+				<div class="layout-row filter-group">
+					<div class="filter-symbol">
+						<span class="bi bi-search"></span>
+					</div>
+					<div style="width: 100%">
+						<input onkeyup="filterView()" class="filter-keywords" id="filter-by-keywords" type="text" placeholder="Filter by Keywords">
+					</div>
+				</div>
+				<div id="filter-list"></div>
+			</div>
+			
+			<!-- Splitter Section -->
+			<div id="splitter"></div>
+			
+			<!-- Right Splitter Section -->
+			<div id="splitter-right" class="bg-white p-3">
+			</div>
+		</div>
+		
+		<!-- Content Splitter Script -->
+		<script>
+        const splitter = document.getElementById('splitter');
+        const splitterLeft = document.getElementById('splitter-left');
+        const splitterRight = document.getElementById('splitter-right');
+
+        let isDragging = false;
+
+        splitter.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.cursor = 'col-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            document.body.style.userSelect = 'none';
+
+            const totalWidth = splitterLeft.offsetWidth + splitterRight.offsetWidth + splitter.offsetWidth;
+            const leftWidth = e.clientX - splitterLeft.getBoundingClientRect().left;
+
+            if (leftWidth > 50 && leftWidth < totalWidth - 50) {
+                splitterLeft.style.flex = `0 0 ${leftWidth}px`;
+                splitterRight.style.flex = `1 1 auto`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.cursor = 'default';
+            document.body.style.userSelect = '';
+        });
+    
+		</script>
+		
+		<!-- Footer Section -->
+		<footer>
+			<a title="Expressium LivingDoc on GitHub" href="https://github.com/ExpressiumOSS/Expressium.LivingDoc" target="_blank" rel="noopener noreferrer">Powered by Expressium LivingDoc</a>
+		</footer>
+		<data style="display: none;">
+			
+			<!-- Data Overview -->
+			<div id="project-view">
+				<div class="section">
+					<table id="table-grid" class="tree-view">
+						<tbody id="table-list">
+							<tr>
+								<td class="grid-folder">📂</td>
+								<td class="grid-border" colspan="9">
+									<span class="grid-folder-name">Expressium.Coffeeshop.Web.API.Tests</span>
+								</td>
+								<td class="grid-border align-right" colspan="2">
+									<button class="grid-expand bi bi-chevron-down" title="Expand All Features" onclick="loadExpandAll()"></button>
+									<button class="grid-collapse bi bi-chevron-up" title="Collapse All Features" onclick="loadCollapseAll()"></button>
+								</td>
+							</tr>
+							<tr data-name="Features" data-role="folder">
+								<td></td>
+								<td class="grid-folder">📂</td>
+								<td class="grid-border" colspan="9">
+									<span class="grid-folder-name">Features</span>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="Features" data-name="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" onclick="loadFeature(this);">
+								<td></td>
+								<td></td>
+								<td data-collapse="false" class="grid-toggle" title="Toggle Feature" onclick="loadCollapse(this);">
+									<span class="bi bi-chevron-down"></span>
+								</td>
+								<td class="grid-border" colspan="8">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">TfL journey planner</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="scenario" data-tags="TfL journey planner @Passed  @happypath  Features/TFLJorneyPlanner.feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="4513777cab710958be99144082fc153a" onclick="loadScenario(this);">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="grid-indent"></td>
+								<td class="grid-border" colspan="7">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">Compare walking and cycling options between nearby stations</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="scenario" data-tags="TfL journey planner @Passed  @happypath  Features/TFLJorneyPlanner.feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="6b8b52e4131f52528f43a63b288a1a90" onclick="loadScenario(this);">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="grid-indent"></td>
+								<td class="grid-border" colspan="7">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">Update journey preferences to least walking</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="scenario" data-tags="TfL journey planner @Passed  @happypath  Features/TFLJorneyPlanner.feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="5e36ef40c20f8b51b93e9e10bdf933ee" onclick="loadScenario(this);">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="grid-indent"></td>
+								<td class="grid-border" colspan="7">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">View complete access information for Covent Garden station</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="scenario" data-tags="TfL journey planner @Passed  @happypath  Features/TFLJorneyPlanner.feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="485c9207de73745e91b7c8d6f4c485b0" onclick="loadScenario(this);">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="grid-indent"></td>
+								<td class="grid-border" colspan="7">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">Invalid locations do not produce journey results</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+							<tr data-parent="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-role="scenario" data-tags="TfL journey planner @Passed  @happypath  Features/TFLJorneyPlanner.feature" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="8e65aa31fce03b5daaaa91f69dd91b41" onclick="loadScenario(this);">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="grid-indent"></td>
+								<td class="grid-border" colspan="7">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+									<a href="#">Empty locations should show an error message</a>
+								</td>
+								<td class="grid-border align-right"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Data Features View -->
+			<div id="features-view">
+				<div class="section">
+					<table id="table-grid" class="list-view">
+						<thead>
+							<tr data-role="header">
+								<th width="20" class="align-center" onclick="sortTableByColumnByAttibute(0, &quot;data-status&quot;)"></th>
+								<th onclick="sortTableByColumn(1)">Feature<span class="sort-column">⇅</span>
+								</th>
+								<th width="110" onclick="sortTableByColumnByAttibute(2, &quot;data-scenarios&quot;)">Scenarios<span class="sort-column">⇅</span>
+								</th>
+								<th width="110" onclick="sortTableByColumnByAttibute(3, &quot;data-passrate&quot;)">Pass Rate<span class="sort-column">⇅</span>
+								</th>
+								<th width="110" onclick="sortTableByColumnByAttibute(4, &quot;data-coverage&quot;)">Coverage<span class="sort-column">⇅</span>
+								</th>
+								<th width="100" onclick="sortTableByColumn(5)">Status<span class="sort-column">⇅</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody id="table-list">
+							<tr class="grid-border" data-role="feature" data-tags="@Passed TfL journey planner " data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" onclick="loadFeature(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">TfL journey planner</a>
+								</td>
+								<td class="align-center" data-scenarios="0005">5</td>
+								<td class="align-center" data-passrate="100">100%</td>
+								<td class="align-center" data-coverage="100">100%</td>
+								<td>Passed</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Data Scenarios View -->
+			<div id="scenarios-view">
+				<div class="section">
+					<table id="table-grid" class="list-view">
+						<thead>
+							<tr data-role="header">
+								<th width="20" class="align-center" onclick="sortTableByColumnByAttibute(0, &quot;data-status&quot;)"></th>
+								<th onclick="sortTableByColumn(1)">Scenario<span class="sort-column">⇅</span>
+								</th>
+								<th width="90" onclick="sortTableByColumnByAttibute(2, &quot;data-order&quot;)">Order<span class="sort-column">⇅</span>
+								</th>
+								<th width="110" onclick="sortTableByColumnByAttibute(3, &quot;data-duration&quot;)">Duration<span class="sort-column">⇅</span>
+								</th>
+								<th width="100" onclick="sortTableByColumn(4)">Status<span class="sort-column">⇅</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody id="table-list">
+							<tr class="grid-border" data-role="scenario" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="4513777cab710958be99144082fc153a" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Compare walking and cycling options between nearby stations</a>
+								</td>
+								<td class="align-center" data-order="0001">1</td>
+								<td class="align-center" data-duration="00:05:629">5s 629ms</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="scenario" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="6b8b52e4131f52528f43a63b288a1a90" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Update journey preferences to least walking</a>
+								</td>
+								<td class="align-center" data-order="0004">4</td>
+								<td class="align-center" data-duration="00:07:708">7s 708ms</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="scenario" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="5e36ef40c20f8b51b93e9e10bdf933ee" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">View complete access information for Covent Garden station</a>
+								</td>
+								<td class="align-center" data-order="0005">5</td>
+								<td class="align-center" data-duration="00:06:981">6s 981ms</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="scenario" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="485c9207de73745e91b7c8d6f4c485b0" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Invalid locations do not produce journey results</a>
+								</td>
+								<td class="align-center" data-order="0003">3</td>
+								<td class="align-center" data-duration="00:03:380">3s 380ms</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="scenario" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="8e65aa31fce03b5daaaa91f69dd91b41" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Empty locations should show an error message</a>
+								</td>
+								<td class="align-center" data-order="0002">2</td>
+								<td class="align-center" data-duration="00:02:850">2s 850ms</td>
+								<td>Passed</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Data Steps View -->
+			<div id="steps-view">
+				<div class="section">
+					<table id="table-grid" class="list-view">
+						<thead>
+							<tr data-role="header">
+								<th width="20" class="align-center" onclick="sortTableByColumnByAttibute(0, &quot;data-status&quot;)"></th>
+								<th onclick="sortTableByColumn(1)">Step<span class="sort-column">⇅</span>
+								</th>
+								<th width="90" onclick="sortTableByColumnByAttibute(2, &quot;data-used&quot;)">Used<span class="sort-column">⇅</span>
+								</th>
+								<th width="90" onclick="sortTableByColumnByAttibute(3, &quot;data-failure&quot;)">Failure<span class="sort-column">⇅</span>
+								</th>
+								<th width="100" onclick="sortTableByColumn(4)">Status<span class="sort-column">⇅</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody id="table-list">
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="4513777cab710958be99144082fc153a" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Given I am on the TfL Plan a journey page</a>
+								</td>
+								<td class="align-center" data-used="0005">5</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="4513777cab710958be99144082fc153a" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">When I plan a journey from "Leicester Square Underground Station" to "Covent Garden Underground Station"</a>
+								</td>
+								<td class="align-center" data-used="0003">3</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="4513777cab710958be99144082fc153a" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Then walking and cycling options should be displayed</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="6b8b52e4131f52528f43a63b288a1a90" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">And I choose routes with least walking</a>
+								</td>
+								<td class="align-center" data-used="0002">2</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="6b8b52e4131f52528f43a63b288a1a90" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Then the journey results should show a journey time</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="5e36ef40c20f8b51b93e9e10bdf933ee" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">And I open journey details</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="5e36ef40c20f8b51b93e9e10bdf933ee" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Then complete access information should be available</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="485c9207de73745e91b7c8d6f4c485b0" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">When I enter invalid journey locations</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="485c9207de73745e91b7c8d6f4c485b0" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Then the planner should not show any journey results</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="8e65aa31fce03b5daaaa91f69dd91b41" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">When I submit the journey planner with no locations</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="8e65aa31fce03b5daaaa91f69dd91b41" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">Then journey planning should not proceed</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+							<tr class="grid-border" data-role="step" data-tags="@Passed TfL journey planner  @happypath" data-featureid="e1318f0f-d80c-4eda-9b02-dbe73bcff545" data-scenarioid="8e65aa31fce03b5daaaa91f69dd91b41" onclick="loadScenario(this);">
+								<td class="align-center" data-status="3">
+									<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+								</td>
+								<td>
+									<a href="#">And an error message should be displayed</a>
+								</td>
+								<td class="align-center" data-used="0001">1</td>
+								<td class="align-center" data-failure="0000">0%</td>
+								<td>Passed</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Data Feature -->
+			<div id="e1318f0f-d80c-4eda-9b02-dbe73bcff545">
+				
+				<!-- Feature Section -->
+				<div class="section">
+					
+					<!-- Data Feature Tags -->
+					<div class="feature-tag-group">
+					</div>
+					
+					<!-- Data Feature Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="feature-keyword">Feature:
+						</span>
+						<span class="feature-name">TfL journey planner</span>
+					</div>
+					
+					<!-- Data Feature Description -->
+					<div>
+						<ul class="feature-description">
+							<li>As a commut</li>
+							<li>I want to plan journeys using TfL's journey planner</li>
+							<li>So that I can compare travel options and station accessibility information</li>
+						</ul>
+					</div>
+					<hr>
+					
+					<!-- Data Feature Background -->
+					<div>
+						<span class="background-keyword">Background:</span>
+						
+						<!-- Data Background Steps -->
+						<div>
+							<ul class="scenario-steps">
+								<li>
+									<span class="color-skipped"></span>
+									<span class="step-keyword">Given</span>
+									<span class="step-name">I am on the TfL Plan a journey page</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			
+			<!-- Data Scenario -->
+			<div id="4513777cab710958be99144082fc153a">
+				
+				<!-- Scenario Section -->
+				<div class="section" style="width: fit-content; max-width: 98%">
+					
+					<!-- Data Scenario Tags -->
+					<div class="scenario-tag-group">
+						<span class="scenario-tag">@happypath</span>
+					</div>
+					
+					<!-- Data Scenario Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="scenario-keyword">Scenario:
+						</span>
+						<span class="scenario-name">Compare walking and cycling options between nearby stations</span>
+						<span class="scenario-duration">5s 629ms</span>
+					</div>
+					
+					<!-- Data Scenario Steps -->
+					<div>
+						<ul class="scenario-steps">
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Given</span>
+								<span class="step-name">I am on the TfL Plan a journey page</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">When</span>
+								<span class="step-name">I plan a journey from "Leicester Square Underground Station" to "Covent Garden Underground Station"</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Then</span>
+								<span class="step-name">walking and cycling options should be displayed</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			
+			<!-- Data Scenario -->
+			<div id="6b8b52e4131f52528f43a63b288a1a90">
+				
+				<!-- Scenario Section -->
+				<div class="section" style="width: fit-content; max-width: 98%">
+					
+					<!-- Data Scenario Tags -->
+					<div class="scenario-tag-group">
+						<span class="scenario-tag">@happypath</span>
+					</div>
+					
+					<!-- Data Scenario Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="scenario-keyword">Scenario:
+						</span>
+						<span class="scenario-name">Update journey preferences to least walking</span>
+						<span class="scenario-duration">7s 708ms</span>
+					</div>
+					
+					<!-- Data Scenario Steps -->
+					<div>
+						<ul class="scenario-steps">
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Given</span>
+								<span class="step-name">I am on the TfL Plan a journey page</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">When</span>
+								<span class="step-name">I plan a journey from "Leicester Square Underground Station" to "Covent Garden Underground Station"</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">And</span>
+								<span class="step-name">I choose routes with least walking</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Then</span>
+								<span class="step-name">the journey results should show a journey time</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			
+			<!-- Data Scenario -->
+			<div id="5e36ef40c20f8b51b93e9e10bdf933ee">
+				
+				<!-- Scenario Section -->
+				<div class="section" style="width: fit-content; max-width: 98%">
+					
+					<!-- Data Scenario Tags -->
+					<div class="scenario-tag-group">
+						<span class="scenario-tag">@happypath</span>
+					</div>
+					
+					<!-- Data Scenario Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="scenario-keyword">Scenario:
+						</span>
+						<span class="scenario-name">View complete access information for Covent Garden station</span>
+						<span class="scenario-duration">6s 981ms</span>
+					</div>
+					
+					<!-- Data Scenario Steps -->
+					<div>
+						<ul class="scenario-steps">
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Given</span>
+								<span class="step-name">I am on the TfL Plan a journey page</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">When</span>
+								<span class="step-name">I plan a journey from "Leicester Square Underground Station" to "Covent Garden Underground Station"</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">And</span>
+								<span class="step-name">I choose routes with least walking</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">And</span>
+								<span class="step-name">I open journey details</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Then</span>
+								<span class="step-name">complete access information should be available</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			
+			<!-- Data Scenario -->
+			<div id="485c9207de73745e91b7c8d6f4c485b0">
+				
+				<!-- Scenario Section -->
+				<div class="section" style="width: fit-content; max-width: 98%">
+					
+					<!-- Data Scenario Tags -->
+					<div class="scenario-tag-group">
+						<span class="scenario-tag">@happypath</span>
+					</div>
+					
+					<!-- Data Scenario Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="scenario-keyword">Scenario:
+						</span>
+						<span class="scenario-name">Invalid locations do not produce journey results</span>
+						<span class="scenario-duration">3s 380ms</span>
+					</div>
+					
+					<!-- Data Scenario Steps -->
+					<div>
+						<ul class="scenario-steps">
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Given</span>
+								<span class="step-name">I am on the TfL Plan a journey page</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">When</span>
+								<span class="step-name">I enter invalid journey locations</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Then</span>
+								<span class="step-name">the planner should not show any journey results</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			
+			<!-- Data Scenario -->
+			<div id="8e65aa31fce03b5daaaa91f69dd91b41">
+				
+				<!-- Scenario Section -->
+				<div class="section" style="width: fit-content; max-width: 98%">
+					
+					<!-- Data Scenario Tags -->
+					<div class="scenario-tag-group">
+						<span class="scenario-tag">@happypath</span>
+					</div>
+					
+					<!-- Data Scenario Name -->
+					<div>
+						<span class="bi bi-check-circle-fill color-passed status-symbol"></span>
+						<span class="scenario-keyword">Scenario:
+						</span>
+						<span class="scenario-name">Empty locations should show an error message</span>
+						<span class="scenario-duration">2s 850ms</span>
+					</div>
+					
+					<!-- Data Scenario Steps -->
+					<div>
+						<ul class="scenario-steps">
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Given</span>
+								<span class="step-name">I am on the TfL Plan a journey page</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">When</span>
+								<span class="step-name">I submit the journey planner with no locations</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">Then</span>
+								<span class="step-name">journey planning should not proceed</span>
+							</li>
+							<li>
+								<span class="step-symbol color-passed">✓</span>
+								<span class="step-keyword">And</span>
+								<span class="step-name">an error message should be displayed</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			
+			<!-- Data Analytics -->
+			<div id="analytics-features">
+				<div class="section">
+					<span class="page-name" data-testid="page-title">Analytics</span>
+				</div>
+				<hr>
+				<hr>
+				<div class="section" style="width: fit-content; margin: auto;">
+					<span class="chart-name" data-testid="features-chart-title">Features</span>
+					<div class="section chart-outline">
+						
+						<!-- Data Analytics Status Chart -->
+						<div class="section" style="text-align: center; margin: auto;">
+							<svg class="chart-status" viewBox="0 0 42 42">
+								<g transform="rotate(-90, 21, 21)">
+									<circle class="donut-segment-passed" cx="21" cy="21" r="15.9155" stroke-dasharray="99 0" stroke-dashoffset="0"></circle>
+								</g>
+								<g class="chart-text">
+									<text x="50%" y="50%" class="chart-number" data-testid="features-chart-passed">100%</text>
+									<text x="50%" y="50%" class="chart-label">Passed</text>
+								</g>
+							</svg>
+						</div>
+						<div class="section" style="text-align: center; margin: auto;">
+							<table class="align-center">
+								<tbody>
+									<tr>
+										<td class="color-passed chart-count">
+											<span class="chart-count-number">1</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Passed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-passed"></div>
+										</td>
+										<td class="color-incomplete chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Incomplete</span>
+											<br>
+											<div class="chart-count-bar bgcolor-incomplete"></div>
+										</td>
+										<td class="color-failed chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Failed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-failed"></div>
+										</td>
+										<td class="color-skipped chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Skipped</span>
+											<br>
+											<div class="chart-count-bar bgcolor-skipped"></div>
+										</td>
+										<td class="color-total chart-count">
+											<span class="chart-count-number">1</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Total</span>
+											<br>
+											<div class="chart-count-bar bgcolor-total"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<hr>
+				
+				<!-- Data Analytics Duration -->
+				<div style="padding-top: 6px; text-align: center; justify-content: center; align-items: center; display: flex;">
+					<span class="bi bi-stopwatch duration-symbol"></span>
+					<span class="duration-text">
+						<span class="duration-keyword">Duration:
+						</span>
+						<span data-testid="project-duration">28s 057ms</span>
+					</span>
+				</div>
+			</div>
+			
+			<!-- Data Analytics -->
+			<div id="analytics-scenarios">
+				<div class="section">
+					<span class="page-name" data-testid="page-title">Analytics</span>
+				</div>
+				<hr>
+				<hr>
+				<div class="section" style="width: fit-content; margin: auto;">
+					<span class="chart-name" data-testid="scenarios-chart-title">Scenarios</span>
+					<div class="section chart-outline">
+						
+						<!-- Data Analytics Status Chart -->
+						<div class="section" style="text-align: center; margin: auto;">
+							<svg class="chart-status" viewBox="0 0 42 42">
+								<g transform="rotate(-90, 21, 21)">
+									<circle class="donut-segment-passed" cx="21" cy="21" r="15.9155" stroke-dasharray="99 0" stroke-dashoffset="0"></circle>
+								</g>
+								<g class="chart-text">
+									<text x="50%" y="50%" class="chart-number" data-testid="scenarios-chart-passed">100%</text>
+									<text x="50%" y="50%" class="chart-label">Passed</text>
+								</g>
+							</svg>
+						</div>
+						<div class="section" style="text-align: center; margin: auto;">
+							<table class="align-center">
+								<tbody>
+									<tr>
+										<td class="color-passed chart-count">
+											<span class="chart-count-number">5</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Passed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-passed"></div>
+										</td>
+										<td class="color-incomplete chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Incomplete</span>
+											<br>
+											<div class="chart-count-bar bgcolor-incomplete"></div>
+										</td>
+										<td class="color-failed chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Failed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-failed"></div>
+										</td>
+										<td class="color-skipped chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Skipped</span>
+											<br>
+											<div class="chart-count-bar bgcolor-skipped"></div>
+										</td>
+										<td class="color-total chart-count">
+											<span class="chart-count-number">5</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Total</span>
+											<br>
+											<div class="chart-count-bar bgcolor-total"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<hr>
+				
+				<!-- Data Analytics Duration -->
+				<div style="padding-top: 6px; text-align: center; justify-content: center; align-items: center; display: flex;">
+					<span class="bi bi-stopwatch duration-symbol"></span>
+					<span class="duration-text">
+						<span class="duration-keyword">Duration:
+						</span>
+						<span data-testid="project-duration">28s 057ms</span>
+					</span>
+				</div>
+			</div>
+			
+			<!-- Data Analytics -->
+			<div id="analytics-steps">
+				<div class="section">
+					<span class="page-name" data-testid="page-title">Analytics</span>
+				</div>
+				<hr>
+				<hr>
+				<div class="section" style="width: fit-content; margin: auto;">
+					<span class="chart-name" data-testid="steps-chart-title">Steps</span>
+					<div class="section chart-outline">
+						
+						<!-- Data Analytics Status Chart -->
+						<div class="section" style="text-align: center; margin: auto;">
+							<svg class="chart-status" viewBox="0 0 42 42">
+								<g transform="rotate(-90, 21, 21)">
+									<circle class="donut-segment-passed" cx="21" cy="21" r="15.9155" stroke-dasharray="99 0" stroke-dashoffset="0"></circle>
+								</g>
+								<g class="chart-text">
+									<text x="50%" y="50%" class="chart-number" data-testid="steps-chart-passed">100%</text>
+									<text x="50%" y="50%" class="chart-label">Passed</text>
+								</g>
+							</svg>
+						</div>
+						<div class="section" style="text-align: center; margin: auto;">
+							<table class="align-center">
+								<tbody>
+									<tr>
+										<td class="color-passed chart-count">
+											<span class="chart-count-number">19</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Passed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-passed"></div>
+										</td>
+										<td class="color-incomplete chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Incomplete</span>
+											<br>
+											<div class="chart-count-bar bgcolor-incomplete"></div>
+										</td>
+										<td class="color-failed chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Failed</span>
+											<br>
+											<div class="chart-count-bar bgcolor-failed"></div>
+										</td>
+										<td class="color-skipped chart-count">
+											<span class="chart-count-number">0</span>
+											<br>
+											<span class="chart-count-percentage">0%</span>
+											<br>
+											<span class="chart-count-status">Skipped</span>
+											<br>
+											<div class="chart-count-bar bgcolor-skipped"></div>
+										</td>
+										<td class="color-total chart-count">
+											<span class="chart-count-number">19</span>
+											<br>
+											<span class="chart-count-percentage">100%</span>
+											<br>
+											<span class="chart-count-status">Total</span>
+											<br>
+											<div class="chart-count-bar bgcolor-total"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<hr>
+				
+				<!-- Data Analytics Duration -->
+				<div style="padding-top: 6px; text-align: center; justify-content: center; align-items: center; display: flex;">
+					<span class="bi bi-stopwatch duration-symbol"></span>
+					<span class="duration-text">
+						<span class="duration-keyword">Duration:
+						</span>
+						<span data-testid="project-duration">28s 057ms</span>
+					</span>
+				</div>
+			</div>
+		</data>
+	</body>
+</html>
