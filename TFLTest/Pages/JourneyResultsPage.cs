@@ -70,12 +70,12 @@ namespace TFL.JourneyPlanner.Tests.Pages
         {
             var heading = _page.Locator(".step-heading")
              .Filter(new LocatorFilterOptions
-             {
-                 //AI help
+             { //AI help
                  Has = _page.Locator("span.location-name", new()
                  {
                      HasTextString = "Covent Garden Underground Station"
                  })
+                
              }).Nth(1);
 
             var accessInformation = heading.Locator(".details .access-information");

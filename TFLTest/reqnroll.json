@@ -2,7 +2,7 @@
   "$schema": "https://schemas.reqnroll.net/reqnroll-config-latest.json",
   "formatters": {
     "expressium": {
-      "outputFilePath": "LivingDoc.ndjson",
+      "outputFilePath": "TestResults/LivingDoc.ndjson",
       "outputFileTitle": "Expressium.Coffeeshop.Web.API.Tests"
     }
   }
