@@ -53,14 +53,13 @@ Functional scenarios
 - Plan a journey for a future date
 - Plan a journey for a past date
 - Change preferences and validate the results
-- I clicked on the update preference button without any changes and i could see it is showing an error - Journey planner could not find any results to your search. Please try again
 - validate the cockie consent behaviour for each of the preference selection
-- I opened two windows and tried the same jorney plan, clicked the button almost at the same time
-  in one window it only showed cycling and walking options with a message 'If you can, walk or cycle this route.'
-  but in the other window it showed 3 options with options including tube 
-
-
-
+- Below from my expereince
+    
+- - When I clicked the "Update Preferences" button without making any changes, an error message was displayed stating: "Journey planner could not find any results for your search. Please try again."
+  - I opened the Journey Planner in two separate browser windows and searched for the same journey. After clicking the button in both windows at nearly the same time, I noticed inconsistent results.
+  - - In one window, only the Walking and Cycling options were displayed, along with the message:  "If you can, walk or cycle this route."
+    - In the other window, three journey options were displayed,  Tube routes for the same search criteria.
 
 Non-Functional scenarios
 -----------------------
