@@ -50,6 +50,11 @@ Functional scenarios
 - Change preferences and validate the results
 - I clicked on the update preference button without any changes and i could see it is showing an error - Journey planner could not find any results to your search. Please try again
 - validate the cockie consent behaviour for each of the preference selection
+- I opened two windows and tried the same jorney plan, clicked the button almost at the same time
+  in one window it only showed cycling and walking options with a message 'If you can, walk or cycle this route.'
+  but in the other window it showed 3 options with options including tube 
+
+
 
 
 Non-Functional scenarios
@@ -62,7 +67,7 @@ Non-Functional scenarios
 
 Disclaimer
 -----------------------
-- Mostly 90% of the development i dint used AI as a assistance, but for some of the areas i have used it
+- Mostly 90% of the development i didn't used AI as a assistance, but for some of the areas I have used it
     * for accessibility options for covent garden underground station finding below code
     ```  
     Has = _page.Locator("span.location-name", new()
@@ -77,5 +82,5 @@ Disclaimer
                 document.getElementById('cb-cookieoverlay')?.remove();
                 document.getElementById('CybotCookiebotDialog')?.remove();
      ``` 
- - I have used visual studio 2026 for cosing and it has inbuilt AI assistance so when i type the code it is suggesting some of the code snippets
+ - I have used visual studio 2026 for coding and it has in-built AI assistance so when I type the code, it was suggesting some of the code snippets
  - Some areas I have used google to find some approaches or fixing issues
