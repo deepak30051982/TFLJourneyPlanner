@@ -72,15 +72,15 @@ Non-Functional scenarios
 
 Disclaimer
 -----------------------
-- Mostly 90% of the development i didn't used AI as a assistance, but for some of the areas I have used it
-    * for accessibility options for covent garden underground station finding below code
+-  90% of the development I didn't use AI as a assistance, but in some  I have used it
+    * finding Accessibility options for covent garden underground station 
     ```  
     Has = _page.Locator("span.location-name", new()
            {
                      HasTextString = "Covent Garden Underground Station"
     })
     ```
-    * Accept cookies overlay was not disappearing even after clicking, this is an odd behaviour i found
+    * Accept cookies overlay was not disappearing after accepting, this is an odd behaviour I found, copilot suggested below code to remove overlay
     ``` // Force-remove the lingering overlay div that blocks clicks
                 //AI generated
                 await _page.EvaluateAsync(@"() => {
