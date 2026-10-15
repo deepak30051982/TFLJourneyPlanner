@@ -41,6 +41,11 @@ Additional improvements
 - run in multiple browsers
 - Additional test scenarios
 
+
+
+Additional Functional and Non-functional Scenarios
+-----------------------
+
 Functional scenarios
 -----------------------
 - Change a previously selected location and validate the results
@@ -59,11 +64,12 @@ Functional scenarios
 
 Non-Functional scenarios
 -----------------------
-- Accessibility throughout the journey flow (using light house tool i could see some accessibility issues)
-- Performance under normal and peak demand (After selecting the source and destination the results was loaded very slowly)
-- Also lighthouse showed some performance issues due to unused files, large js files etc
-- Usability testing for the journy planner widget (after clicking on plan jorney button the preferences are is not visible)
-- DIfferent digital channel such as mobile, tablet and desktop to validate the responsiveness
+- Accessibility Testing: Validate accessibility compliance across the entire journey planning flow.( For example, using light house tool i could see some accessibility issues)
+- Performance Tests: Performance under normal and peak demand (After selecting the source and destination the results was loaded very slowly)
+- Additionally, lighthouse showed some performance issues due to unused files, large js files etc
+- Usability Testing: Evaluate the user experience of the Journey Planner widget. For example, after clicking the "Plan Journey" button, the preferences section is not fully visible to the user
+- Cross-Device and Responsive Testing: Validate the functionality and responsiveness of the journey planner across different devices and screen sizes, including desktop, tablet, and mobile platforms
+- Security Testing : for common vulnerabilities
 
 Disclaimer
 -----------------------
